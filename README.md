@@ -15,7 +15,20 @@ http://localhost:8080/questions
 
 # Comando para ejecutar desde cloud run
 ```
-http://localhost:8080/questions
+gcloud run jobs deploy job-quickstart \
+    --source . \
+    --tasks 50 \
+    --set-env-vars SLEEP_MS=10000 \
+    --set-env-vars FAIL_RATE=0.1 \
+    --max-retries 5 \
+    --region REGION \
+    --project=PROJECT_ID
+```
+
+# Ejecuta un trabajo en Cloud Run
+
+```
+gcloud run jobs execute job-quickstart --region REGION
 ```
 
 
